@@ -1,6 +1,5 @@
 backend:
-  name: github
-  repo: aeenak/website
+  name: git-gateway
   branch: main
 
 media_folder: "images/uploads"
