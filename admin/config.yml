@@ -5,12 +5,59 @@ backend:
 media_folder: "images/uploads"
 
 collections:
-  - name: "pages"
-    label: "Pages"
+  - name: "home"
+    label: "Home Page"
     files:
       - name: "home"
-        label: "Home Page"
-        file: "index.html"
+        label: "Home Page Content"
+        file: "data/home.yml"
         fields:
-          - { label: "Title", name: "title", widget: "string" }
-          - { label: "Body", name: "body", widget: "markdown" }
+          - label: "Hero Section"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow Text", name: "hero_eyebrow", widget: "string" }
+              - { label: "Main Heading", name: "hero_heading", widget: "string" }
+              - { label: "Subheading", name: "hero_subheading", widget: "text" }
+              - { label: "Button Text", name: "hero_button_text", widget: "string" }
+              - { label: "Button URL", name: "hero_button_url", widget: "string" }
+
+          - label: "Why Section"
+            name: "why"
+            widget: "object"
+            fields:
+              - { label: "Heading", name: "why_heading", widget: "string" }
+              - { label: "Subtext", name: "why_subtext", widget: "string" }
+              - { label: "Video Embed URL", name: "why_video_url", widget: "string" }
+
+          - label: "Social Proof"
+            name: "social_proof"
+            widget: "object"
+            fields:
+              - { label: "Heading", name: "social_proof_heading", widget: "string" }
+              - { label: "Stat 1", name: "social_proof_stat1", widget: "string" }
+              - { label: "Stat 2", name: "social_proof_stat2", widget: "string" }
+              - { label: "Stat 3", name: "social_proof_stat3", widget: "string" }
+
+          - label: "Testimonials"
+            name: "testimonials"
+            widget: "object"
+            fields:
+              - { label: "Heading", name: "testimonials_heading", widget: "string" }
+              - { label: "Intro Text", name: "testimonials_intro", widget: "text" }
+
+          - label: "FAQ"
+            name: "faq_items"
+            widget: "list"
+            fields:
+              - { label: "Question", name: "question", widget: "string" }
+              - { label: "Answer", name: "answer", widget: "text" }
+
+          - label: "Footer & Newsletter"
+            name: "footer"
+            widget: "object"
+            fields:
+              - { label: "Footer Tagline", name: "footer_tagline", widget: "string" }
+              - { label: "Newsletter Heading", name: "newsletter_heading", widget: "string" }
+              - { label: "Newsletter Body", name: "newsletter_body", widget: "text" }
+              - { label: "Newsletter Button Text", name: "newsletter_button_text", widget: "string" }
