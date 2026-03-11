@@ -6,6 +6,8 @@
   <title>AEENAK - Authority Platform for Leaders</title>
   <meta name="description" content="Build authority on LinkedIn and turn strangers into $100k+ deals. For C-Level executives and their teams.">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Netlify Identity Widget -->
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   <style>
     * {
       margin: 0;
@@ -962,14 +964,12 @@
   </div>
 </section>
 
-<!-- FOOTER — Change 9: Removed "Programs and Start Building on LinkedIn" -->
+<!-- FOOTER -->
 <footer class="footer">
   <div class="footer-inner">
     <div class="footer-column">
       <h4>AEENAK</h4>
-      <!-- Change 10 -->
       <a href="mission-and-story.html">Our Mission &amp; Story</a>
-      <!-- Change 11 -->
       <a href="case-studies.html">Case Studies</a>
     </div>
     <div class="footer-column">
@@ -1048,29 +1048,18 @@
     }
   });
 
-  // ─────────────────────────────────────────────────────────────────
+  // Netlify Identity — redirect to /admin after login
+  if (window.netlifyIdentity) {
+    window.netlifyIdentity.on("init", user => {
+      if (!user) {
+        window.netlifyIdentity.on("login", () => {
+          document.location.href = "/admin/";
+        });
+      }
+    });
+  }
+
   // NEWSLETTER → GOOGLE SHEETS INTEGRATION
-  // ─────────────────────────────────────────────────────────────────
-  // HOW TO SET UP (one-time, ~5 minutes):
-  //
-  // 1. Open Google Sheets and create a new sheet called "Newsletter Subscribers"
-  //    with columns:  A = Timestamp  B = Name  C = Email
-  //
-  // 2. In that sheet go to Extensions → Apps Script → paste this code:
-  //
-  //    function doPost(e) {
-  //      var data = JSON.parse(e.postData.contents);
-  //      var sheet = SpreadsheetApp.getActiveSpreadsheet()
-  //                    .getSheetByName("Newsletter Subscribers");
-  //      sheet.appendRow([new Date(), data.name, data.email]);
-  //      return ContentService.createTextOutput("OK");
-  //    }
-  //
-  // 3. Click Deploy → New deployment → Web app
-  //    Execute as: Me  |  Who has access: Anyone  → Deploy
-  //
-  // 4. Copy the Web App URL and paste it below as SHEET_URL:
-  //
   const SHEET_URL = 'https://script.google.com/macros/s/AKfycbxHsMp2Gx7qRbuZUy5mH4IUsfggjHAq5hhHWKH-RI5UZ269l7EwK0Hc7wkoAbKDt2JT/exec';
 
   async function handleNewsletterSubmit(e) {
@@ -1079,33 +1068,25 @@
     const email = document.getElementById('nl-email').value.trim();
     const btn   = e.target.querySelector('button[type="submit"]');
 
-    // Disable button while saving
     btn.disabled = true;
     btn.textContent = 'Saving…';
 
-    // Save to Google Sheet (if SHEET_URL is set)
     if (SHEET_URL) {
       try {
         await fetch(SHEET_URL, {
           method: 'POST',
-          mode: 'no-cors',   // Apps Script CORS workaround — still sends data
+          mode: 'no-cors',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ name, email, timestamp: new Date().toISOString() })
         });
       } catch(err) {
-        // Fail silently — don't block payment even if sheet write fails
         console.warn('Sheet write failed:', err);
       }
     }
 
-    // Show confirmation message
     document.getElementById('nl-success').style.display = 'block';
     document.getElementById('newsletter-form').style.display = 'none';
 
-    // Open PayPal payment page after short delay
-    // Once payment completes you'll receive a PayPal notification email.
-    // The subscriber's name+email will already be in your Google Sheet —
-    // import that column into EmailOctopus to add them to your list.
     setTimeout(() => {
       window.open('https://www.paypal.com/ncp/payment/GJ775VVYAHF6E', '_blank');
     }, 700);
