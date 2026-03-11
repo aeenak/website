@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Join the Community | AEENAK</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
+
+    body {
+      background: #05080f;
+      color: #f5f5f5;
+      line-height: 1.7;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    /* NAVY BLUE → BLACK PREMIUM GRADIENT */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0;
+      width: 300%; height: 300%;
+      background: linear-gradient(-45deg, #0a1628, #060c18, #000000, #0d1f3c, #030508, #0a1628);
+      background-size: 300% 300%;
+      animation: gradient-shift 18s ease infinite;
+      z-index: -2;
+      pointer-events: none;
+    }
+
+    @keyframes gradient-shift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .nav {
+      background: rgba(5, 8, 15, 0.85);
+      backdrop-filter: blur(10px);
+      padding: 20px 0;
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(79, 172, 254, 0.1);
+    }
+
+    .nav-inner {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: 800;
+      color: #f5f5f5;
+      text-decoration: none;
+      letter-spacing: -0.5px;
+    }
+
+    .nav-btn {
+      background: #0a66c2;
+      color: white;
+      padding: 10px 24px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      transition: all 0.3s ease;
+    }
+
+    .nav-btn:hover {
+      background: #0852a3;
+      transform: translateY(-2px);
+    }
+
+    .page-wrap {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 160px 20px 80px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .community-box {
+      max-width: 780px;
+      width: 100%;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(79, 172, 254, 0.2);
+      border-radius: 16px;
+      padding: 60px 50px;
+    }
+
+    .community-box h1 {
+      font-size: 40px;
+      font-weight: 800;
+      color: #f5f5f5;
+      line-height: 1.2;
+      margin-bottom: 30px;
+      letter-spacing: -0.5px;
+    }
+
+    .community-box p {
+      font-size: 16px;
+      color: rgba(245, 245, 245, 0.82);
+      margin-bottom: 20px;
+      line-height: 1.8;
+    }
+
+    .community-box .highlight {
+      color: #fbbf24;
+      font-weight: 700;
+    }
+
+    .community-box .membership {
+      margin-top: 35px;
+      padding: 24px 28px;
+      background: rgba(10, 102, 194, 0.12);
+      border: 1px solid rgba(10, 102, 194, 0.3);
+      border-radius: 10px;
+      color: #4faafe;
+      font-size: 18px;
+      font-weight: 700;
+      text-align: center;
+      letter-spacing: -0.3px;
+    }
+
+    /* Google Form embed */
+    .form-section {
+      margin-top: 50px;
+      border-top: 1px solid rgba(79,172,254,0.15);
+      padding-top: 40px;
+    }
+
+    .form-section h2 {
+      font-size: 22px;
+      font-weight: 700;
+      color: #f5f5f5;
+      margin-bottom: 25px;
+    }
+
+    .gform-wrap {
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(79,172,254,0.2);
+      background: white;
+    }
+
+    .gform-wrap iframe {
+      width: 100%;
+      height: 3255px;
+      border: none;
+      display: block;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      color: rgba(245,245,245,0.4);
+      font-size: 14px;
+      position: relative;
+      z-index: 1;
+    }
+
+    @media (max-width: 600px) {
+      .community-box { padding: 40px 24px; }
+      .community-box h1 { font-size: 28px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="logo">AEENAK</a>
+    <a href="https://zcal.co/i/w9sHRUVw" class="nav-btn">Book an Appointment</a>
+  </div>
+</nav>
+
+<div class="page-wrap">
+  <div class="community-box">
+    <h1>Ready to upgrade Your network by joining a Community of CXOs and Business owners.</h1>
+
+    <p>This is a private network of founders, Leaders, and Business owners who actively build relationships and close deals through LinkedIn.</p>
+
+    <p>Members of this community have collectively generated <span class="highlight">$350M+</span> in closed deals.</p>
+
+    <p>The community is intentionally small and curated.</p>
+
+    <p>Many members not only collaborate externally but also close deals with each other inside the network.</p>
+
+    <div class="membership">Approved members pay a $1,999 / Annual Membership</div>
+
+    <!-- Google Form embedded directly on page -->
+    <div class="form-section">
+      <h2>Apply for Membership</h2>
+      <!-- Google Form embedded directly -->
+      <div class="gform-wrap">
+        <iframe
+          src="https://docs.google.com/forms/d/e/1FAIpQLSeDCEAsi5aiUPyzlXVo7nXdGQkd6QOc9rlsfqzzW97YFdkRuw/viewform?embedded=true"
+          title="Membership Application Form"
+          loading="lazy"
+          marginheight="0"
+          marginwidth="0">
+          Loading…
+        </iframe>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>© 2026 AEENAK. All rights reserved.</footer>
+
+</body>
+</html>

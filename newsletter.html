@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Why Aeenak Why? — The Newsletter | AEENAK</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background: #0a0e27;
+      color: #f5f5f5;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* AURORA GRADIENT BACKGROUND */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 300%;
+      height: 300%;
+      background: linear-gradient(
+        -45deg,
+        rgba(10, 102, 194, 0.25),
+        rgba(20, 184, 166, 0.20),
+        rgba(79, 172, 254, 0.22),
+        rgba(10, 102, 194, 0.20),
+        rgba(20, 184, 166, 0.25),
+        rgba(10, 102, 194, 0.22)
+      );
+      background-size: 300% 300%;
+      animation: aurora 10s ease-in-out infinite;
+      z-index: -2;
+      pointer-events: none;
+    }
+
+    @keyframes aurora {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* GRAIN TEXTURE */
+    body::after {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' result='noise'/%3E%3C/filter%3E%3Crect width='400' height='400' fill='%23000' filter='url(%23noiseFilter)' opacity='0.02'/%3E%3C/svg%3E");
+      background-size: 400px 400px;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    /* NAVIGATION */
+    .nav {
+      background: rgba(10, 14, 39, 0.8);
+      backdrop-filter: blur(10px);
+      padding: 20px 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(79, 172, 254, 0.1);
+    }
+
+    .nav-inner {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-weight: 800;
+      font-size: 24px;
+      color: #f5f5f5;
+      text-decoration: none;
+      letter-spacing: -0.5px;
+    }
+
+    .nav-btn {
+      background: #0a66c2;
+      padding: 12px 28px;
+      border-radius: 6px;
+      text-decoration: none;
+      color: white;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .nav-btn:hover {
+      background: #0852a3;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(10, 102, 194, 0.3);
+    }
+
+    /* LAYOUT */
+    .news-layout {
+      display: flex;
+      max-width: 1140px;
+      margin: 100px auto 0;
+      padding: 0 20px;
+      gap: 0;
+      align-items: flex-start;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* CONTENT */
+    .news-content {
+      flex: 1;
+      padding-right: 50px;
+      text-align: left;
+    }
+
+    /* DIVIDER */
+    .news-divider {
+      width: 1px;
+      background: rgba(79, 172, 254, 0.2);
+      align-self: stretch;
+      flex-shrink: 0;
+      min-height: 600px;
+    }
+
+    /* SIDEBAR */
+    .news-sidebar {
+      width: 300px;
+      flex-shrink: 0;
+      padding-left: 40px;
+    }
+
+    .news-sidebar h3 {
+      font-size: 13px;
+      color: rgba(79, 172, 254, 0.8);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 28px;
+      font-weight: 700;
+      text-align: right;
+    }
+
+    /* PAST EDITIONS */
+    .past-edition {
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-end;
+      gap: 10px;
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(79, 172, 254, 0.1);
+    }
+
+    .past-edition:last-child {
+      border-bottom: none;
+    }
+
+    .li-link {
+      flex-shrink: 0;
+      margin-top: 3px;
+      opacity: 0.6;
+      transition: opacity 0.2s;
+      text-decoration: none;
+      display: flex;
+      align-items: flex-start;
+      order: 1;
+    }
+
+    .li-link:hover {
+      opacity: 1;
+    }
+
+    .li-link svg {
+      width: 16px;
+      height: 16px;
+      fill: #4faafe;
+    }
+
+    .edition-text {
+      flex: 1;
+      text-align: right;
+      order: 2;
+    }
+
+    .past-title {
+      font-size: 13.5px;
+      font-weight: 500;
+      color: rgba(245, 245, 245, 0.8);
+      line-height: 1.55;
+      text-decoration: none;
+      display: block;
+      transition: color 0.2s;
+    }
+
+    .past-title:hover {
+      color: #4faafe;
+    }
+
+    .edition-dot {
+      flex-shrink: 0;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #4faafe;
+      opacity: 0.4;
+      margin-top: 7px;
+      order: 3;
+    }
+
+    /* ARTICLE HEADER */
+    .newsletter-name {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(79, 172, 254, 0.8);
+      margin-bottom: 10px;
+    }
+
+    .article-tag {
+      color: #4faafe;
+      font-weight: 600;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .article-title {
+      font-size: 48px;
+      font-weight: 800;
+      line-height: 1.15;
+      margin: 10px 0 20px;
+      color: #f5f5f5;
+      letter-spacing: -1px;
+    }
+
+    .article-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: rgba(245, 245, 245, 0.7);
+      font-size: 14px;
+      margin-top: 18px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid rgba(79, 172, 254, 0.1);
+    }
+
+    .article-meta img {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .article-meta strong {
+      color: #f5f5f5;
+    }
+
+    /* ARTICLE BODY */
+    .article-body p {
+      font-size: 18px;
+      line-height: 1.9;
+      color: rgba(245, 245, 245, 0.85);
+      margin-bottom: 22px;
+    }
+
+    .article-body .intro-block {
+      margin-top: 28px;
+    }
+
+    /* PAYWALL */
+    .paywall-section {
+      position: relative;
+      margin-top: 8px;
+    }
+
+    .blurred-text {
+      filter: blur(4px);
+      opacity: 0.4;
+      user-select: none;
+      pointer-events: none;
+      max-height: 480px;
+      overflow: hidden;
+    }
+
+    .blurred-text p {
+      font-size: 18px;
+      line-height: 1.9;
+      color: #f5f5f5;
+      margin-bottom: 20px;
+    }
+
+    .paywall-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        to bottom,
+        rgba(10, 14, 39, 0),
+        rgba(10, 14, 39, 0),
+        rgba(10, 14, 39, 0.4),
+        rgba(10, 14, 39, 0.95)
+      );
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      padding-top: 90px;
+    }
+
+    .paywall-box {
+      background: rgba(79, 172, 254, 0.08);
+      border: 1px solid rgba(79, 172, 254, 0.2);
+      padding: 36px 40px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 20px 50px rgba(10, 102, 194, 0.15);
+      max-width: 420px;
+      width: 100%;
+    }
+
+    .paywall-box h2 {
+      font-size: 21px;
+      margin: 0 0 10px;
+      color: #f5f5f5;
+      font-weight: 800;
+    }
+
+    .paywall-box p {
+      font-size: 15px;
+      color: rgba(245, 245, 245, 0.8);
+      margin-bottom: 22px;
+      line-height: 1.6;
+    }
+
+    .unlock-btn {
+      display: block;
+      background: #0a66c2;
+      color: white;
+      padding: 15px 32px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 15px;
+      transition: all 0.3s;
+      box-shadow: 0 10px 20px rgba(10, 102, 194, 0.3);
+      border: none;
+      cursor: pointer;
+    }
+
+    .unlock-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 15px 30px rgba(10, 102, 194, 0.4);
+      background: #0852a3;
+    }
+
+    /* FOOTER */
+    .news-footer {
+      text-align: center;
+      padding: 24px 20px;
+      margin-top: 28px;
+      color: rgba(245, 245, 245, 0.4);
+      font-size: 13px;
+      border-top: 1px solid rgba(79, 172, 254, 0.1);
+      position: relative;
+      z-index: 1;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .news-layout {
+        flex-direction: column;
+      }
+
+      .news-divider {
+        width: 100%;
+        height: 1px;
+        min-height: unset;
+        margin: 40px 0;
+      }
+
+      .news-content {
+        padding-right: 0;
+      }
+
+      .news-sidebar {
+        width: 100%;
+        padding-left: 0;
+      }
+
+      .news-sidebar h3 {
+        text-align: left;
+      }
+
+      .past-edition {
+        justify-content: flex-start;
+      }
+
+      .edition-text {
+        text-align: left;
+      }
+
+      .article-title {
+        font-size: 36px;
+      }
+
+      .paywall-overlay {
+        justify-content: center;
+        padding-top: 60px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .article-title {
+        font-size: 28px;
+      }
+
+      .article-body p {
+        font-size: 16px;
+      }
+
+      .paywall-box {
+        max-width: 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<div class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="logo">AEENAK</a>
+    <a href="newsletter.html" class="nav-btn">Subscribe to Newsletter</a>
+  </div>
+</div>
+
+<div class="news-layout">
+
+  <!-- LEFT: ARTICLE -->
+  <div class="news-content">
+
+    <div class="article-header">
+      <div class="newsletter-name">Why Aeenak Why?</div>
+      <span class="article-tag">Issue #001</span>
+      <h1 class="article-title">The Game of Push & Pull</h1>
+      <div class="article-meta">
+        <img src="author.png" alt="Nawaz Ali Khan">
+        <div>
+          <strong>Nawaz Ali Khan</strong><br>
+          Read time: 5 mins
+        </div>
+      </div>
+    </div>
+
+    <div class="article-body">
+
+      <!-- FREE — first 2 paragraphs visible -->
+      <div class="intro-block">
+        <p>The oldest game has no rulebook. Just players who understand it and players who don't.</p>
+        <p>Muammar Gaddafi ruled Libya for 42 years. He was eccentric. Theatrical. Occasionally brilliant. Frequently brutal. He nationalized oil. Expelled foreign military bases. Funded liberation movements across three continents. Built the Great Man-Made River — one of the largest irrigation projects in human history — to push water from ancient aquifers beneath the Sahara to the coast.</p>
+      </div>
+
+      <!-- PAYWALL -->
+      <div class="paywall-section">
+
+        <!-- Blurred remainder of the article -->
+        <div class="blurred-text">
+          <p>He had a plan to replace the US dollar with a gold-backed African currency for oil transactions. In 2011, he was pulled from a drainage pipe outside Sirte and killed by a mob while the world watched on their phones. Six months before his death, Hillary Clinton visited Tripoli. The meeting was warm. The photographs were cordial. Nobody talks about that visit very much.</p>
+          <p>I am not here to eulogize Gaddafi. He was not a good man in any complete sense of the word. But his ending tells you something about the game that his biography alone cannot — something about how power actually moves, who actually holds it, and what happens to the people who misread the room at the wrong moment. The game I am talking about is not politics. Politics is the costume the game wears in public. The game is something older and simpler and considerably less polite. It is pull and push.</p>
+          <p>Every meaningful transaction in human history — every treaty, every war, every merger, every revolution — is at its core a negotiation between what someone has and what someone else wants. When the exchange is clean, we call it commerce. When the exchange is complex, layered, coercive, and conducted across generations with no single moment of settlement, we call it geopolitics. But the underlying mechanism is identical.</p>
+          <p>You have something I want. I have something you need. The question is who understands the terms of the exchange more clearly. The person who understands the terms more clearly almost always wins. Not the stronger person. Not the more righteous person. Not the person with the better argument or the more defensible position. The person who read the room.</p>
+          <p>Here is what nobody teaches you about power. It is not a noun. It is not a thing you possess like a car or a title or a piece of land. Power is a verb. It is the continuous act of making other people's calculations include you.</p>
+          <p>The pull and push is not evil by design. This is the part that makes people uncomfortable. We want the story to be simple. We want the powerful to be villains and the powerless to be victims and the arc of history to bend, eventually, toward something resembling justice. Sometimes it does. More often, it bends toward whoever made themselves indispensable to enough of the right people at the right time.</p>
+          <p>What nobody teaches in school is not the names of the kings or the dates of the battles or even the causes of the wars. What nobody teaches is the grammar of the game. The grammar is this: Transactions build leverage. Leverage builds options. Options build power. Power, poorly understood, destroys itself.</p>
+          <p>Pull and push. The oldest sentence in the world. Still being written.</p>
+        </div>
+
+        <!-- Paywall overlay -->
+        <div class="paywall-overlay">
+          <div class="paywall-box">
+            <h2>Keep reading this issue</h2>
+            <p>Unlock the full essay and get every future issue of <em>Why Aeenak Why?</em> delivered to your inbox.</p>
+            <a href="https://aeenak.gumroad.com/l/lhajkx" class="unlock-btn">Unlock for $2</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- DIVIDER -->
+  <div class="news-divider"></div>
+
+  <!-- RIGHT: PREVIOUS EDITIONS -->
+  <div class="news-sidebar">
+    <h3>Previous Editions</h3>
+
+    <div class="past-edition">
+      <a href="https://www.linkedin.com/feed/update/urn:li:activity:7350381062939701250/" target="_blank" rel="noopener" class="li-link" title="View on LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.475-2.236-1.986-2.236-1.081 0-1.722.732-2.004 1.438-.103.249-.129.597-.129.946v5.421h-3.554s.043-8.789 0-9.707h3.554v1.375c.427-.659 1.191-1.595 2.897-1.595 2.117 0 3.704 1.385 3.704 4.362v5.565zM5.337 9.433c-1.144 0-1.915-.758-1.915-1.707 0-.954.771-1.707 1.965-1.707 1.194 0 1.916.753 1.941 1.707 0 .949-.747 1.707-1.991 1.707zm1.608 11.019H3.729V9.745h3.216v10.707zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg></a>
+      <div class="edition-text"><a href="https://www.linkedin.com/feed/update/urn:li:activity:7350381062939701250/" target="_blank" rel="noopener" class="past-title">The biggest mistake founders make with their LinkedIn banner...</a></div>
+      <div class="edition-dot"></div>
+    </div>
+
+    <div class="past-edition">
+      <a href="https://www.linkedin.com/feed/update/urn:li:activity:7351830600967782400/" target="_blank" rel="noopener" class="li-link" title="View on LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.475-2.236-1.986-2.236-1.081 0-1.722.732-2.004 1.438-.103.249-.129.597-.129.946v5.421h-3.554s.043-8.789 0-9.707h3.554v1.375c.427-.659 1.191-1.595 2.897-1.595 2.117 0 3.704 1.385 3.704 4.362v5.565zM5.337 9.433c-1.144 0-1.915-.758-1.915-1.707 0-.954.771-1.707 1.965-1.707 1.194 0 1.916.753 1.941 1.707 0 .949-.747 1.707-1.991 1.707zm1.608 11.019H3.729V9.745h3.216v10.707zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg></a>
+      <div class="edition-text"><a href="https://www.linkedin.com/feed/update/urn:li:activity:7351830600967782400/" target="_blank" rel="noopener" class="past-title">I analyzed 100+ viral posts. Here is the exact framework we found...</a></div>
+      <div class="edition-dot"></div>
+    </div>
+
+    <div class="past-edition">
+      <a href="https://www.linkedin.com/feed/update/urn:li:activity:7363086847826120708/" target="_blank" rel="noopener" class="li-link" title="View on LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.475-2.236-1.986-2.236-1.081 0-1.722.732-2.004 1.438-.103.249-.129.597-.129.946v5.421h-3.554s.043-8.789 0-9.707h3.554v1.375c.427-.659 1.191-1.595 2.897-1.595 2.117 0 3.704 1.385 3.704 4.362v5.565zM5.337 9.433c-1.144 0-1.915-.758-1.915-1.707 0-.954.771-1.707 1.965-1.707 1.194 0 1.916.753 1.941 1.707 0 .949-.747 1.707-1.991 1.707zm1.608 11.019H3.729V9.745h3.216v10.707zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg></a>
+      <div class="edition-text"><a href="https://www.linkedin.com/feed/update/urn:li:activity:7363086847826120708/" target="_blank" rel="noopener" class="past-title">Why posting 5 times a week is actually hurting your reach right now...</a></div>
+      <div class="edition-dot"></div>
+    </div>
+
+    <div class="past-edition">
+      <a href="https://www.linkedin.com/feed/update/urn:li:activity:7334800705729253377/" target="_blank" rel="noopener" class="li-link" title="View on LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.475-2.236-1.986-2.236-1.081 0-1.722.732-2.004 1.438-.103.249-.129.597-.129.946v5.421h-3.554s.043-8.789 0-9.707h3.554v1.375c.427-.659 1.191-1.595 2.897-1.595 2.117 0 3.704 1.385 3.704 4.362v5.565zM5.337 9.433c-1.144 0-1.915-.758-1.915-1.707 0-.954.771-1.707 1.965-1.707 1.194 0 1.916.753 1.941 1.707 0 .949-.747 1.707-1.991 1.707zm1.608 11.019H3.729V9.745h3.216v10.707zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg></a>
+      <div class="edition-text"><a href="https://www.linkedin.com/feed/update/urn:li:activity:7334800705729253377/" target="_blank" rel="noopener" class="past-title">How we helped a SaaS founder book 15 qualified calls in one week...</a></div>
+      <div class="edition-dot"></div>
+    </div>
+
+    <div class="past-edition">
+      <a href="https://www.linkedin.com/feed/update/urn:li:activity:7356617129502142468/" target="_blank" rel="noopener" class="li-link" title="View on LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.475-2.236-1.986-2.236-1.081 0-1.722.732-2.004 1.438-.103.249-.129.597-.129.946v5.421h-3.554s.043-8.789 0-9.707h3.554v1.375c.427-.659 1.191-1.595 2.897-1.595 2.117 0 3.704 1.385 3.704 4.362v5.565zM5.337 9.433c-1.144 0-1.915-.758-1.915-1.707 0-.954.771-1.707 1.965-1.707 1.194 0 1.916.753 1.941 1.707 0 .949-.747 1.707-1.991 1.707zm1.608 11.019H3.729V9.745h3.216v10.707zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg></a>
+      <div class="edition-text"><a href="https://www.linkedin.com/feed/update/urn:li:activity:7356617129502142468/" target="_blank" rel="noopener" class="past-title">The "Silent Sales Page" method that converts profile views into leads...</a></div>
+      <div class="edition-dot"></div>
+    </div>
+
+    <div class="past-edition">
+      <a href="https://www.linkedin.com/feed/update/urn:li:activity:7407260868662652928/" target="_blank" rel="noopener" class="li-link" title="View on LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.475-2.236-1.986-2.236-1.081 0-1.722.732-2.004 1.438-.103.249-.129.597-.129.946v5.421h-3.554s.043-8.789 0-9.707h3.554v1.375c.427-.659 1.191-1.595 2.897-1.595 2.117 0 3.704 1.385 3.704 4.362v5.565zM5.337 9.433c-1.144 0-1.915-.758-1.915-1.707 0-.954.771-1.707 1.965-1.707 1.194 0 1.916.753 1.941 1.707 0 .949-.747 1.707-1.991 1.707zm1.608 11.019H3.729V9.745h3.216v10.707zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg></a>
+      <div class="edition-text"><a href="https://www.linkedin.com/feed/update/urn:li:activity:7407260868662652928/" target="_blank" rel="noopener" class="past-title">Stop using ChatGPT for your LinkedIn posts. Try this specific prompt instead...</a></div>
+      <div class="edition-dot"></div>
+    </div>
+
+    <div class="past-edition">
+      <a href="http://linkedin.com/feed/update/urn:li:activity:7425051555168649216/" target="_blank" rel="noopener" class="li-link" title="View on LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.475-2.236-1.986-2.236-1.081 0-1.722.732-2.004 1.438-.103.249-.129.597-.129.946v5.421h-3.554s.043-8.789 0-9.707h3.554v1.375c.427-.659 1.191-1.595 2.897-1.595 2.117 0 3.704 1.385 3.704 4.362v5.565zM5.337 9.433c-1.144 0-1.915-.758-1.915-1.707 0-.954.771-1.707 1.965-1.707 1.194 0 1.916.753 1.941 1.707 0 .949-.747 1.707-1.991 1.707zm1.608 11.019H3.729V9.745h3.216v10.707zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg></a>
+      <div class="edition-text"><a href="http://linkedin.com/feed/update/urn:li:activity:7425051555168649216/" target="_blank" rel="noopener" class="past-title">3 simple tweaks to your featured section that instantly build trust...</a></div>
+      <div class="edition-dot"></div>
+    </div>
+
+    <div class="past-edition">
+      <a href="https://www.linkedin.com/feed/update/urn:li:activity:7417415258685874176/" target="_blank" rel="noopener" class="li-link" title="View on LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.475-2.236-1.986-2.236-1.081 0-1.722.732-2.004 1.438-.103.249-.129.597-.129.946v5.421h-3.554s.043-8.789 0-9.707h3.554v1.375c.427-.659 1.191-1.595 2.897-1.595 2.117 0 3.704 1.385 3.704 4.362v5.565zM5.337 9.433c-1.144 0-1.915-.758-1.915-1.707 0-.954.771-1.707 1.965-1.707 1.194 0 1.916.753 1.941 1.707 0 .949-.747 1.707-1.991 1.707zm1.608 11.019H3.729V9.745h3.216v10.707zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg></a>
+      <div class="edition-text"><a href="https://www.linkedin.com/feed/update/urn:li:activity:7417415258685874176/" target="_blank" rel="noopener" class="past-title">The hidden psychology behind a high-converting LinkedIn headline...</a></div>
+      <div class="edition-dot"></div>
+    </div>
+
+  </div>
+</div>
+
+<div class="news-footer">© 2026 AEENAK. All rights reserved.</div>
+
+<script>
+  window.addEventListener('scroll', function() {
+    const navbar = document.querySelector('.nav');
+    if (window.scrollY > 50) {
+      navbar.style.background = 'rgba(10, 14, 39, 0.95)';
+    } else {
+      navbar.style.background = 'rgba(10, 14, 39, 0.8)';
+    }
+  });
+</script>
+
+</body>
+</html>

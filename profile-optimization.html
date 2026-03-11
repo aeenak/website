@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LinkedIn Profile Optimization | AEENAK</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
+    body { background: #f5f7fa; color: #111; }
+    .container { width: 90%; max-width: 1200px; margin: auto; }
+    section { padding: 90px 20px; }
+
+    /* NAV — LinkedIn Blue, kept as is */
+    .nav {
+      background: #0A66C2;
+      padding: 30px 0;
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+    }
+
+    .nav-inner {
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* Change 22 */
+    .logo {
+      color: white;
+      font-weight: 700;
+      font-size: 22px;
+      text-decoration: none;
+    }
+
+    .nav-btn {
+      background: white;
+      color: #0A66C2;
+      padding: 12px 26px;
+      border-radius: 40px;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    /* HERO */
+    .hero { text-align: center; padding-top: 180px; padding-bottom: 60px; }
+    .hero h1 { font-size: 48px; font-weight: 800; margin-bottom: 15px; }
+    .hero-sub { font-size: 20px; color: #444; }
+    .danger-word { background: #e63946; color: white; padding: 6px 14px; border-radius: 6px; font-weight: 700; }
+
+    /* CLIENT AVATARS */
+    .avatar-group { display: flex; justify-content: center; margin-top: 40px; margin-bottom: 25px; }
+    .avatar { width: 44px; height: 44px; border-radius: 50%; margin-left: -12px; border: 3px solid white; box-shadow: 0 4px 12px rgba(0,0,0,0.15); object-fit: cover; }
+    .trusted { text-align: center; }
+    .trusted-text { margin-bottom: 60px; color: #555; }
+
+    .agency-heading {
+      font-size: 48px;
+      font-weight: 800;
+      margin-bottom: 25px;
+      background: linear-gradient(90deg, #0A66C2, #2d8cff, #6db7ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .trusted-sub { max-width: 700px; margin: auto; margin-bottom: 20px; color: #555; }
+    .spots-left { color: #e63946; font-weight: 600; margin-bottom: 20px; }
+
+    .hero-btn {
+      background: #0A66C2;
+      color: white;
+      padding: 18px 40px;
+      border-radius: 40px;
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-block;
+      margin-top: 10px;
+    }
+
+    .trust-features {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-top: 30px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    /* WHAT YOU GET — Change 23: updated list */
+    .features { text-align: center; }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 40px;
+    }
+
+    .feature-box {
+      background: white;
+      padding: 22px;
+      border-radius: 12px;
+      font-weight: 600;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+    }
+
+    /* Change 23: "What Clients Say" section DELETED */
+
+    /* PROCESS */
+    .process { text-align: center; }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 20px;
+      margin-top: 40px;
+    }
+
+    .process-box { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.06); }
+    .process-box h3 { margin-bottom: 10px; color: #0A66C2; }
+
+    /* CTA */
+    .final-cta { text-align: center; background: #071f3d; color: white; }
+    .final-cta h2 { font-size: 36px; margin-bottom: 20px; }
+
+    /* FOOTER */
+    .footer { background: #0A66C2; color: white; padding: 40px 20px; text-align: center; }
+
+    @media (max-width: 900px) {
+      .feature-grid { grid-template-columns: repeat(2, 1fr); }
+      .process-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 600px) {
+      .feature-grid { grid-template-columns: 1fr; }
+      .process-grid { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 32px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <!-- Change 22 -->
+    <a href="index.html" class="logo">AEENAK</a>
+    <a class="nav-btn" href="https://zcal.co/i/w9sHRUVw" target="_blank">Book a Call</a>
+  </div>
+</nav>
+
+<section class="hero container">
+  <h1>Upgrade Your LinkedIn Profile</h1>
+  <p class="hero-sub">Industry leaders notice <span class="danger-word">EVERYTHING</span></p>
+</section>
+
+<section class="trusted container">
+  <div class="avatar-group">
+    <img src="client1.png" class="avatar">
+    <img src="client2.png" class="avatar">
+    <img src="client3.png" class="avatar">
+    <img src="client4.png" class="avatar">
+    <img src="client5.png" class="avatar">
+    <img src="client6.png" class="avatar">
+  </div>
+  <p class="trusted-text">Trusted by <strong>100+ creators and founders</strong></p>
+  <h2 class="agency-heading">Complete LinkedIn Profile Optimization</h2>
+  <p class="trusted-sub">We upgrade your LinkedIn profile from scratch to look professional, premium, and aligned with your personality.</p>
+  <p class="spots-left">3 spots left this month</p>
+  <a class="hero-btn" href="https://zcal.co/i/w9sHRUVw" target="_blank">Book a Call Now</a>
+  <div class="trust-features">
+    <div>Strategy First</div>
+    <div>Premium Design</div>
+    <div>Positioning Driven</div>
+  </div>
+</section>
+
+<!-- Change 23: Updated "What You Get" list -->
+<section class="features container">
+  <h2>What You Get</h2>
+  <div class="feature-grid">
+    <div class="feature-box">Offer Clarity (Even Professionals need to move past their Job Titles)</div>
+    <div class="feature-box">ICP Clarity</div>
+    <div class="feature-box">Positioning</div>
+    <div class="feature-box">Banner Redesign</div>
+    <div class="feature-box">Headline Rewrite</div>
+    <div class="feature-box">About Section Strategy</div>
+    <div class="feature-box">About Section Rewrite</div>
+    <div class="feature-box">Featured Strategy</div>
+    <div class="feature-box">Experience Section Optimization</div>
+    <div class="feature-box">Education Section Optimization</div>
+    <div class="feature-box">Three Authority Posts</div>
+    <div class="feature-box">Full Alignment Recommendations</div>
+  </div>
+</section>
+
+<!-- Change 23: "What Clients Say" section REMOVED -->
+
+<section class="process container">
+  <h2>Your LinkedIn Transformation Process</h2>
+  <div class="process-grid">
+    <div class="process-box">
+      <h3>Stage 0</h3>
+      <p>Payment via PayPal, Wise, Razorpay, or UPI.</p>
+    </div>
+    <div class="process-box">
+      <h3>Stage 1</h3>
+      <p>Extraction. We collect files, information, and get on a call to understand your offer and personality.</p>
+    </div>
+    <div class="process-box">
+      <h3>Stage 2</h3>
+      <p>Strategy. We design positioning changes for every section of your profile.</p>
+    </div>
+    <div class="process-box">
+      <h3>Stage 3</h3>
+      <p>Delivery. We implement the changes and optimize the entire profile.</p>
+    </div>
+    <div class="process-box">
+      <h3>Stage 4</h3>
+      <p>If satisfied, we request a LinkedIn recommendation.</p>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta">
+  <div class="container">
+    <h2>Ready to transform your LinkedIn profile?</h2>
+    <a class="hero-btn" href="https://zcal.co/i/w9sHRUVw" target="_blank">Book a Call Now</a>
+  </div>
+</section>
+
+<footer class="footer">© 2026 AEENAK</footer>
+
+</body>
+</html>

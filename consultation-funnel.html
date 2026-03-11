@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Consultation Funnel Setup | AEENAK</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
+
+    body {
+      background: #05080f;
+      color: #f5f5f5;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0;
+      width: 300%; height: 300%;
+      background: linear-gradient(-45deg, #0a1628, #060c18, #000000, #0d1f3c, #030508, #0a1628);
+      background-size: 300% 300%;
+      animation: aurora 18s ease infinite;
+      z-index: -2;
+      pointer-events: none;
+    }
+
+    @keyframes aurora {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' result='noise'/%3E%3C/filter%3E%3Crect width='400' height='400' fill='%23000' filter='url(%23noiseFilter)' opacity='0.02'/%3E%3C/svg%3E");
+      background-size: 400px 400px;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .container { width: 90%; max-width: 1200px; margin: 0 auto; }
+    section { padding: 110px 20px; position: relative; z-index: 1; }
+
+    /* NAV */
+    .nav {
+      background: rgba(5, 8, 15, 0.85);
+      backdrop-filter: blur(10px);
+      padding: 20px 0;
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(79, 172, 254, 0.1);
+    }
+
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      font-weight: 800;
+      font-size: 24px;
+      color: #f5f5f5;
+      text-decoration: none;
+      letter-spacing: -0.5px;
+    }
+
+    .nav-btn {
+      background: #0a66c2;
+      padding: 12px 28px;
+      border-radius: 6px;
+      text-decoration: none;
+      color: white;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      font-size: 14px;
+    }
+
+    .nav-btn:hover {
+      background: #0852a3;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(10, 102, 194, 0.3);
+    }
+
+    /* HERO — Change 19 */
+    .hero {
+      text-align: center;
+      padding-top: 160px;
+    }
+
+    .hero h1 {
+      font-size: 64px;
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 30px;
+      color: #f5f5f5;
+      letter-spacing: -1px;
+    }
+
+    .hero p {
+      color: rgba(245, 245, 245, 0.8);
+      font-size: 18px;
+      max-width: 800px;
+      margin: 0 auto 0;
+      line-height: 1.8;
+    }
+
+    .consultation-features {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-top: 35px;
+      font-weight: 600;
+      color: rgba(245, 245, 245, 0.9);
+      flex-wrap: wrap;
+    }
+
+    /* Extra space before button */
+    .hero-btn-wrap {
+      margin-top: 60px;
+    }
+
+    .hero-btn {
+      background: #0a66c2;
+      color: white;
+      padding: 16px 48px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-block;
+      transition: all 0.3s ease;
+      font-size: 15px;
+    }
+
+    .hero-btn:hover {
+      background: #0852a3;
+      transform: translateY(-3px);
+      box-shadow: 0 12px 35px rgba(10, 102, 194, 0.4);
+    }
+
+    /* CONSULTATION FLOW */
+    .process { text-align: center; }
+
+    .process h2 {
+      font-size: 48px;
+      margin-bottom: 50px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    .flowchart-process {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0;
+      flex-wrap: wrap;
+      margin-bottom: 60px;
+    }
+
+    .process-box {
+      background: rgba(79, 172, 254, 0.08);
+      padding: 20px 28px;
+      border-radius: 8px;
+      border: 1px solid rgba(79, 172, 254, 0.15);
+      transition: all 0.3s ease;
+      font-weight: 600;
+      color: #f5f5f5;
+      font-size: 14px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .process-box:hover {
+      border-color: rgba(10, 102, 194, 0.4);
+      transform: translateY(-3px);
+      background: rgba(79, 172, 254, 0.12);
+      box-shadow: 0 10px 30px rgba(10, 102, 194, 0.1);
+    }
+
+    .arrow { color: #4faafe; font-size: 24px; margin: 0 20px; font-weight: 300; flex-shrink: 0; }
+
+    .dam-goal {
+      margin-top: 60px;
+      padding: 30px;
+      background: linear-gradient(135deg, rgba(251, 191, 36, 0.2), rgba(251, 191, 36, 0.08));
+      border-left: 4px solid #fbbf24;
+      border-radius: 8px;
+      color: #fbbf24;
+      font-size: 16px;
+      line-height: 1.7;
+      font-weight: 600;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* FINAL CTA */
+    .final-cta {
+      text-align: center;
+      background: rgba(79, 172, 254, 0.03);
+      border-top: 1px solid rgba(79, 172, 254, 0.1);
+      border-bottom: 1px solid rgba(79, 172, 254, 0.1);
+    }
+
+    .final-cta h2 { font-size: 48px; margin-bottom: 25px; font-weight: 800; letter-spacing: -0.5px; }
+
+    .final-cta p { color: rgba(245, 245, 245, 0.8); margin-bottom: 35px; font-size: 16px; line-height: 1.7; }
+
+    .cta-btn {
+      background: #0a66c2;
+      padding: 16px 48px;
+      border-radius: 6px;
+      text-decoration: none;
+      color: white;
+      font-weight: 600;
+      display: inline-block;
+      transition: all 0.3s ease;
+      font-size: 15px;
+    }
+
+    .cta-btn:hover {
+      background: #0852a3;
+      transform: translateY(-3px);
+      box-shadow: 0 12px 35px rgba(10, 102, 194, 0.4);
+    }
+
+    /* FOOTER — Change 19 */
+    .page-footer {
+      text-align: center;
+      padding: 30px 20px;
+      color: rgba(245,245,245,0.5);
+      font-size: 14px;
+      position: relative;
+      z-index: 1;
+      border-top: 1px solid rgba(79, 172, 254, 0.08);
+    }
+
+    @media (max-width: 900px) {
+      .consultation-features { flex-direction: column; gap: 20px; }
+      .hero h1 { font-size: 44px; }
+      .flowchart-process { flex-direction: column; }
+      .arrow { transform: rotate(90deg); margin: 15px 0; }
+    }
+
+    @media (max-width: 600px) {
+      .hero { padding-top: 100px; }
+      .hero h1 { font-size: 32px; }
+      .hero p { font-size: 16px; }
+      .final-cta h2, .process h2 { font-size: 32px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <!-- Change 22 -->
+    <a href="index.html" class="logo">AEENAK</a>
+    <a class="nav-btn" href="https://zcal.co/i/w9sHRUVw">Book an Appointment</a>
+  </div>
+</nav>
+
+<!-- HERO — Change 19 (updated copy + extra space) -->
+<section class="hero container">
+  <h1>Is Your LinkedIn still stuck at 0 Inbound Qualified Leads?</h1>
+
+  <p>We make it easy for Serious Buyers to find You, see you as an authority and trust You with their Problems</p>
+
+  <div class="consultation-features">
+    <div>Funnel Strategy</div>
+    <div>Conversion Optimization</div>
+    <div>Buyer Psychology</div>
+  </div>
+
+  <!-- Extra space — Change 19 -->
+  <div class="hero-btn-wrap">
+    <a class="hero-btn" href="https://zcal.co/i/w9sHRUVw">Book an Appointment</a>
+  </div>
+</section>
+
+<!-- Change 20: "What You Get" section DELETED -->
+
+<!-- CONSULTATION FLOW -->
+<section class="process container">
+  <h2>Consultation Flow</h2>
+
+  <div class="flowchart-process">
+    <div class="process-box">Understand Your Position</div>
+    <span class="arrow">→</span>
+    <div class="process-box">Map the Visitor Journey</div>
+    <span class="arrow">→</span>
+    <div class="process-box">Design Your Conversion Funnel</div>
+  </div>
+
+  <div class="dam-goal">
+    <strong>The Principle:</strong> Don't just patch the leaks. Build a fortress that captures and converts every qualified visitor into a potential deal.
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <div class="container">
+    <h2>Ready to build a LinkedIn funnel that actually converts?</h2>
+    <p>Book a consultation to design your visitor-to-buyer journey.</p>
+    <a class="cta-btn" href="https://zcal.co/i/w9sHRUVw">Book an Appointment</a>
+  </div>
+</section>
+
+<!-- FOOTER — Change 19 -->
+<footer class="page-footer">
+  © 2026 AEENAK. All rights reserved.
+</footer>
+
+</body>
+</html>

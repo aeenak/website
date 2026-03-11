@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Retainer - Done For You LinkedIn Growth | AEENAK</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
+
+    body {
+      background: #05080f;
+      color: #f5f5f5;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* NAVY → BLACK GRADIENT */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0;
+      width: 300%; height: 300%;
+      background: linear-gradient(-45deg, #0a1628, #060c18, #000000, #0d1f3c, #030508, #0a1628);
+      background-size: 300% 300%;
+      animation: aurora 18s ease infinite;
+      z-index: -2;
+      pointer-events: none;
+    }
+
+    @keyframes aurora {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' result='noise'/%3E%3C/filter%3E%3Crect width='400' height='400' fill='%23000' filter='url(%23noiseFilter)' opacity='0.02'/%3E%3C/svg%3E");
+      background-size: 400px 400px;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .container { width: 90%; max-width: 1200px; margin: 0 auto; }
+    section { padding: 110px 20px; position: relative; z-index: 1; }
+
+    /* NAV */
+    .nav {
+      background: rgba(5, 8, 15, 0.85);
+      backdrop-filter: blur(10px);
+      padding: 20px 0;
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(79, 172, 254, 0.1);
+    }
+
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      font-weight: 800;
+      font-size: 24px;
+      color: #f5f5f5;
+      text-decoration: none;
+      letter-spacing: -0.5px;
+    }
+
+    .nav-btn {
+      background: #0a66c2;
+      padding: 12px 28px;
+      border-radius: 6px;
+      text-decoration: none;
+      color: white;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      font-size: 14px;
+    }
+
+    .nav-btn:hover {
+      background: #0852a3;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(10, 102, 194, 0.3);
+    }
+
+    /* HERO */
+    .hero { padding-top: 160px; text-align: center; }
+
+    .hero h1 {
+      font-size: 64px;
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 30px;
+      color: #f5f5f5;
+      letter-spacing: -1px;
+    }
+
+    .blue-gradient {
+      background: linear-gradient(90deg, #0a66c2, #4faafe);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero p {
+      color: rgba(245, 245, 245, 0.8);
+      font-size: 18px;
+      max-width: 800px;
+      margin: 0 auto 40px;
+      line-height: 1.8;
+    }
+
+    .hero-btn {
+      background: #0a66c2;
+      color: white;
+      padding: 16px 48px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-block;
+      transition: all 0.3s ease;
+      font-size: 15px;
+    }
+
+    .hero-btn:hover {
+      background: #0852a3;
+      transform: translateY(-3px);
+      box-shadow: 0 12px 35px rgba(10, 102, 194, 0.4);
+    }
+
+    /* AUTHORITY BOX */
+    .authority-box {
+      margin-top: 50px;
+      padding: 40px;
+      background: rgba(79, 172, 254, 0.08);
+      border: 1px solid rgba(79, 172, 254, 0.15);
+      border-radius: 12px;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .authority-line {
+      color: #f5f5f5;
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    .authority-line .gold { color: #fbbf24; font-weight: 700; }
+
+    /* PROBLEM SECTION */
+    .problem {
+      text-align: center;
+      background: rgba(79, 172, 254, 0.03);
+      border-top: 1px solid rgba(79, 172, 254, 0.1);
+      border-bottom: 1px solid rgba(79, 172, 254, 0.1);
+    }
+
+    .problem h2 { font-size: 48px; margin-bottom: 50px; font-weight: 800; letter-spacing: -0.5px; }
+    .problem h2 .gold { color: #fbbf24; }
+
+    .problem-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .problem-box {
+      background: rgba(79, 172, 254, 0.05);
+      padding: 30px;
+      border-radius: 12px;
+      color: rgba(245, 245, 245, 0.8);
+      border: 1px solid rgba(79, 172, 254, 0.15);
+      transition: all 0.3s ease;
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    .problem-box:hover {
+      border-color: rgba(10, 102, 194, 0.4);
+      transform: translateY(-4px);
+      background: rgba(79, 172, 254, 0.08);
+      box-shadow: 0 15px 40px rgba(10, 102, 194, 0.1);
+    }
+
+    /* FEATURES */
+    .features { text-align: center; }
+
+    .features h2 {
+      font-size: 48px;
+      margin-bottom: 15px;
+      color: #f5f5f5;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    .features-subtitle { color: rgba(245, 245, 245, 0.7); font-size: 16px; margin-bottom: 70px; }
+
+    .feature-groups { display: flex; flex-direction: column; gap: 80px; }
+
+    .feature-group { text-align: center; }
+
+    .feature-group-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: #4faafe;
+      margin-bottom: 40px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .flowchart {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0;
+      flex-wrap: wrap;
+      margin: 0 auto;
+    }
+
+    .flowchart-foundation, .flowchart-profile, .flowchart-demand {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0;
+      flex-wrap: wrap;
+      margin-bottom: 60px;
+    }
+
+    .feature-box {
+      background: rgba(79, 172, 254, 0.08);
+      padding: 20px 28px;
+      border-radius: 8px;
+      border: 1px solid rgba(79, 172, 254, 0.15);
+      transition: all 0.3s ease;
+      font-weight: 600;
+      color: #f5f5f5;
+      font-size: 14px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .feature-box:hover {
+      border-color: rgba(10, 102, 194, 0.4);
+      transform: translateY(-3px);
+      background: rgba(79, 172, 254, 0.12);
+      box-shadow: 0 10px 30px rgba(10, 102, 194, 0.1);
+    }
+
+    .arrow { color: #4faafe; font-size: 24px; margin: 0 20px; font-weight: 300; flex-shrink: 0; }
+
+    .feature-goal {
+      margin-top: 60px;
+      padding: 30px;
+      background: linear-gradient(135deg, rgba(251, 191, 36, 0.2), rgba(251, 191, 36, 0.08));
+      border-left: 4px solid #fbbf24;
+      border-radius: 8px;
+      color: #fbbf24;
+      font-size: 16px;
+      line-height: 1.7;
+      font-weight: 600;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* WHO THIS IS FOR — Change 15: Table layout */
+    .who-for { text-align: center; }
+
+    .who-for h2 {
+      font-size: 48px;
+      margin-bottom: 60px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    .who-for-table {
+      max-width: 900px;
+      margin: 0 auto;
+      border-collapse: separate;
+      border-spacing: 0;
+      width: 100%;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(79, 172, 254, 0.2);
+    }
+
+    .who-for-table thead tr th {
+      padding: 20px 30px;
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      width: 50%;
+    }
+
+    .who-for-table thead tr th.green-head {
+      background: rgba(34, 197, 94, 0.15);
+      color: #22c55e;
+      border-right: 1px solid rgba(79, 172, 254, 0.1);
+    }
+
+    .who-for-table thead tr th.red-head {
+      background: rgba(239, 68, 68, 0.12);
+      color: #ef4444;
+    }
+
+    .who-for-table tbody tr td {
+      padding: 16px 30px;
+      font-size: 15px;
+      color: rgba(245, 245, 245, 0.85);
+      line-height: 1.6;
+      vertical-align: top;
+    }
+
+    .who-for-table tbody tr td:first-child {
+      background: rgba(34, 197, 94, 0.05);
+      border-right: 1px solid rgba(79, 172, 254, 0.1);
+    }
+
+    .who-for-table tbody tr td:last-child {
+      background: rgba(239, 68, 68, 0.04);
+    }
+
+    .who-for-table tbody tr:not(:last-child) td {
+      border-bottom: 1px solid rgba(79, 172, 254, 0.08);
+    }
+
+    /* CTA SECTION */
+    .cta {
+      text-align: center;
+      background: rgba(79, 172, 254, 0.03);
+      border-top: 1px solid rgba(79, 172, 254, 0.1);
+      border-bottom: 1px solid rgba(79, 172, 254, 0.1);
+    }
+
+    .cta h2 { font-size: 48px; margin-bottom: 25px; font-weight: 800; letter-spacing: -0.5px; }
+    .cta p { color: rgba(245, 245, 245, 0.8); margin-bottom: 35px; font-size: 16px; line-height: 1.7; }
+
+    .cta-btn {
+      background: #0a66c2;
+      padding: 16px 48px;
+      border-radius: 6px;
+      text-decoration: none;
+      color: white;
+      font-weight: 600;
+      display: inline-block;
+      transition: all 0.3s ease;
+      font-size: 15px;
+    }
+
+    .cta-btn:hover {
+      background: #0852a3;
+      transform: translateY(-3px);
+      box-shadow: 0 12px 35px rgba(10, 102, 194, 0.4);
+    }
+
+    /* FOOTER — Change 17 */
+    .page-footer {
+      text-align: center;
+      padding: 30px 20px;
+      color: rgba(245,245,245,0.5);
+      font-size: 14px;
+      position: relative;
+      z-index: 1;
+      border-top: 1px solid rgba(79, 172, 254, 0.08);
+    }
+
+    @media (max-width: 900px) {
+      .problem-grid { grid-template-columns: 1fr 1fr; }
+      .hero h1 { font-size: 44px; }
+      .flowchart-foundation, .flowchart-profile, .flowchart-demand { flex-direction: column; }
+      .arrow { transform: rotate(90deg); margin: 15px 0; }
+      .who-for-table { font-size: 14px; }
+    }
+
+    @media (max-width: 600px) {
+      .hero { padding-top: 100px; }
+      .hero h1 { font-size: 32px; }
+      .hero p { font-size: 16px; }
+      .problem-grid { grid-template-columns: 1fr; }
+      .problem h2, .features h2, .who-for h2, .cta h2 { font-size: 32px; }
+      .who-for-table thead tr th, .who-for-table tbody tr td { padding: 12px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <!-- Change 22 -->
+    <a href="index.html" class="logo">AEENAK</a>
+    <a class="nav-btn" href="https://zcal.co/i/w9sHRUVw">Book an Appointment</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero container">
+  <h1>Build Authority.<br>Automate Inbound.</h1>
+
+  <!-- Change 13 -->
+  <p>Without posting like an Influencer, looking needy or getting unserious enquires</p>
+
+  <a class="hero-btn" href="https://zcal.co/i/w9sHRUVw">Book an Appointment</a>
+
+  <div class="authority-box">
+    <!-- Change 14 -->
+    <div class="authority-line">
+      Our clients closed <span class="gold">$80K–$140K</span> Retainers from LinkedIn inbound
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="problem container">
+  <h2>Why some leaders close <span class="gold">$80K–$140K</span> Retainer deals from LinkedIn?</h2>
+  <div class="problem-grid">
+    <div class="problem-box">They are positioned as the obvious authority in their niche.</div>
+    <div class="problem-box">Their profile attracts executives and decision-makers already looking for their expertise.</div>
+    <div class="problem-box">Inbound conversations come from qualified, high-ticket buyers.</div>
+    <div class="problem-box">Their calendar fills with retainer inquiries, keynote invites, and board advisory offers.</div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features container">
+  <h2>What We Build For You</h2>
+  <p class="features-subtitle">A complete LinkedIn infrastructure designed for high-ticket retainer deal flow.</p>
+
+  <div class="feature-groups">
+    <div class="feature-group">
+      <div class="feature-group-title">Foundation</div>
+      <div class="flowchart-foundation">
+        <div class="feature-box">Offer Refinement</div>
+        <span class="arrow">→</span>
+        <div class="feature-box">ICP Positioning</div>
+        <span class="arrow">→</span>
+        <div class="feature-box">Authority Positioning</div>
+      </div>
+    </div>
+
+    <div class="feature-group">
+      <div class="feature-group-title">Profile Infrastructure</div>
+      <div class="flowchart-profile">
+        <div class="feature-box">Profile Optimization</div>
+        <span class="arrow">→</span>
+        <div class="feature-box">Banner + Bio + About</div>
+        <span class="arrow">→</span>
+        <div class="feature-box">Featured Section</div>
+        <span class="arrow">→</span>
+        <div class="feature-box">Experience Section</div>
+      </div>
+    </div>
+
+    <div class="feature-group">
+      <div class="feature-group-title">Demand Engine</div>
+      <div class="flowchart-demand">
+        <div class="feature-box">Content Strategy</div>
+        <span class="arrow">→</span>
+        <div class="feature-box">Free Resource Strategy</div>
+        <span class="arrow">→</span>
+        <div class="feature-box">DM Management</div>
+        <span class="arrow">→</span>
+        <div class="feature-box">Lead Qualification</div>
+      </div>
+      <div style="width:100%;text-align:center;margin-top:40px;">
+        <span class="arrow" style="display:inline-block;margin:0;">↓</span>
+      </div>
+      <div style="width:100%;text-align:center;margin-top:20px;display:flex;flex-wrap:wrap;justify-content:center;align-items:center;">
+        <div class="feature-box" style="display:inline-block;">Meeting Booking</div>
+        <span class="arrow">→</span>
+        <div class="feature-box" style="display:inline-block;">Comment Management</div>
+        <span class="arrow">→</span>
+        <div class="feature-box" style="display:inline-block;">Lead Tracking</div>
+        <span class="arrow">→</span>
+        <div class="feature-box" style="display:inline-block;">Full LinkedIn Funnel</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="feature-goal"><strong>Goal:</strong> Turn LinkedIn into a predictable inbound retainer deal flow system.</div>
+</section>
+
+<!-- WHO THIS IS FOR — Change 15: Table -->
+<section class="who-for container">
+  <h2>Who This Is For</h2>
+
+  <table class="who-for-table">
+    <thead>
+      <tr>
+        <th class="green-head">✓ This is for you if:</th>
+        <th class="red-head">✗ This is NOT for you if:</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Your retainer deals are $50K+</td>
+        <td>You're still building credibility</td>
+      </tr>
+      <tr>
+        <td>You're an established authority in your niche</td>
+        <td>Your offer hasn't been battle-tested</td>
+      </tr>
+      <tr>
+        <td>You want inbound instead of outreach</td>
+        <td>You're looking for quick growth hacks</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- CTA — Change 16 -->
+<section class="cta container">
+  <h2>Ready to increase Revenue that is driven by You directly?</h2>
+  <p>Book an appointment to explore if this is right for You.</p>
+  <a class="cta-btn" href="https://zcal.co/i/w9sHRUVw">Book an Appointment</a>
+</section>
+
+<!-- FOOTER — Change 17 -->
+<footer class="page-footer">
+  © 2026 AEENAK. All rights reserved.
+</footer>
+
+</body>
+</html>

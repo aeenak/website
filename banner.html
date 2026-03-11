@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AEENAK Designs</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
+
+    body { background: #f5f7fa; color: #111; }
+
+    .container { width: 90%; max-width: 1200px; margin: auto; }
+    section { padding: 90px 20px; }
+
+    /* NAV */
+    .nav {
+      background: #0A66C2;
+      padding: 30px 0;
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+    }
+
+    .nav-inner {
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* Change 22: AEENAK clickable link */
+    .logo {
+      color: white;
+      font-weight: 700;
+      font-size: 22px;
+      text-decoration: none;
+    }
+
+    .nav-btn {
+      background: white;
+      color: #0A66C2;
+      padding: 12px 26px;
+      border-radius: 40px;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    /* HERO */
+    .offer-page-header {
+      text-align: center;
+      padding-top: 180px;
+      padding-bottom: 60px;
+    }
+
+    .offer-page-header h1 { font-size: 48px; font-weight: 800; margin-bottom: 15px; }
+    .hero-sub { font-size: 20px; color: #444; }
+
+    /* CLIENTS */
+    .avatar-group {
+      display: flex;
+      justify-content: center;
+      margin-top: 40px;
+      margin-bottom: 25px;
+    }
+
+    .avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      margin-left: -12px;
+      border: 3px solid white;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      object-fit: cover;
+    }
+
+    .trusted { text-align: center; }
+    .trusted-text { margin-bottom: 60px; color: #555; font-size: 17px; }
+
+    .agency-heading {
+      font-size: 48px;
+      font-weight: 800;
+      margin-bottom: 25px;
+      background: linear-gradient(90deg, #0A66C2, #2d8cff, #6db7ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .trusted-sub { max-width: 700px; margin: auto; margin-bottom: 20px; color: #555; }
+    .spots-left { color: #e63946; font-weight: 600; margin-bottom: 20px; }
+
+    .hero-btn {
+      background: #0A66C2;
+      color: white;
+      padding: 18px 40px;
+      border-radius: 40px;
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-block;
+      margin-top: 10px;
+    }
+
+    .trust-features {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-top: 30px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    /* TESTIMONIALS — Change 21: "What Clients Say" DELETED */
+    .testimonials { text-align: center; }
+
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .testimonial-grid img { width: 100%; border-radius: 10px; }
+
+    /* PROBLEM — Change 21 */
+    .problem { text-align: center; }
+    .problem h2 { font-size: 36px; margin-bottom: 15px; }
+    .problem p { margin-bottom: 10px; }
+
+    /* STATS */
+    .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; margin: 40px 0; }
+    .stats h3 { font-size: 42px; color: #0A66C2; margin-bottom: 5px; }
+
+    /* BANNER SHOWCASE */
+    .banner-showcase { overflow: hidden; background: white; padding: 40px 0; }
+
+    .banner-track {
+      display: flex;
+      gap: 30px;
+      width: max-content;
+      animation: scrollBanners 20s linear infinite;
+    }
+
+    .banner-column { display: flex; flex-direction: column; gap: 20px; }
+
+    .banner-column img {
+      height: 150px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+
+    @keyframes scrollBanners {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* CTA — Change 21 */
+    .final-cta-section { text-align: center; background: #071f3d; color: white; }
+    .final-cta-section h2 { font-size: 36px; margin-bottom: 20px; }
+
+    /* FOOTER */
+    .footer { background: #0A66C2; color: white; padding: 40px 20px; text-align: center; }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <!-- Change 22: Clickable link to index.html -->
+    <a href="index.html" class="logo">AEENAK</a>
+    <a class="nav-btn" href="https://zcal.co/i/w9sHRUVw" target="_blank">Schedule a Call</a>
+  </div>
+</nav>
+
+<header class="offer-page-header container">
+  <h1>What if your LinkedIn positioned you as an expert?</h1>
+  <p class="hero-sub">Industry leaders notice <span style="background:#e63946;color:white;padding:6px 14px;border-radius:6px;font-weight:700;">EVERYTHING</span></p>
+</header>
+
+<section class="trusted container">
+  <div class="avatar-group">
+    <img src="client1.png" class="avatar">
+    <img src="client2.png" class="avatar">
+    <img src="client3.png" class="avatar">
+    <img src="client4.png" class="avatar">
+    <img src="client5.png" class="avatar">
+    <img src="client6.png" class="avatar">
+  </div>
+  <p class="trusted-text">Trusted by <strong>100+ creators and founders</strong></p>
+  <h2 class="agency-heading">The Home of Premium LinkedIn Banner Design</h2>
+  <p class="trusted-sub">LinkedIn's Top 1% Brand Design Agency. All Your LinkedIn Designs Covered.</p>
+  <p class="spots-left">3 spots left this month</p>
+  <a class="hero-btn" href="https://zcal.co/i/w9sHRUVw" target="_blank">Schedule a One-on-One Call</a>
+  <div class="trust-features">
+    <div>Senior Designers</div>
+    <div>Fast Delivery</div>
+    <div>50+ Five Stars</div>
+  </div>
+</section>
+
+<!-- Change 21: "What Clients Say" section DELETED — testimonials shown without heading -->
+<section class="testimonials container">
+  <div class="testimonial-grid">
+    <img src="testimonial1.png">
+    <img src="testimonial2.png">
+    <img src="testimonial3.png">
+    <img src="testimonial4.png">
+    <img src="testimonial5.png">
+    <img src="testimonial6.png">
+    <img src="testimonial7.png">
+    <img src="testimonial8.png">
+    <img src="testimonial9.png">
+    <img src="testimonial10.png">
+    <img src="testimonial11.png">
+    <img src="testimonial12.png">
+  </div>
+</section>
+
+<!-- Change 21: Updated copy -->
+<section class="problem container">
+  <h2>Your LinkedIn banner is the first thing your potential clients see.</h2>
+  <!-- Change 21: "Are they impressed? — or are you a Blah?" -->
+  <p>Are they impressed?</p>
+  <p>— or are you a <strong>Blah?</strong></p>
+
+  <div class="stats">
+    <div><h3>100+</h3><p>Creators Helped</p></div>
+    <div><h3>10x</h3><p>Profile Growth</p></div>
+    <div><h3>99%</h3><p>Success Rate</p></div>
+    <div><h3>24h</h3><p>Delivery Timeline</p></div>
+  </div>
+
+  <p>Your expertise is strong, your presentation isn't. A high-performing LinkedIn profile communicates value instantly before anyone reads a word.</p>
+</section>
+
+<section class="banner-showcase">
+  <div class="banner-track">
+    <div class="banner-column"><img src="Images/banner1.png"><img src="Images/banner2.png"></div>
+    <div class="banner-column"><img src="Images/banner3.png"><img src="Images/banner4.png"></div>
+    <div class="banner-column"><img src="Images/banner5.png"><img src="Images/banner6.png"></div>
+    <div class="banner-column"><img src="Images/banner7.png"><img src="Images/banner8.png"></div>
+    <div class="banner-column"><img src="Images/banner9.png"><img src="Images/banner10.png"></div>
+    <div class="banner-column"><img src="Images/banner11.png"><img src="Images/banner12.png"></div>
+    <div class="banner-column"><img src="Images/banner13.png"><img src="Images/banner14.png"></div>
+    <div class="banner-column"><img src="Images/banner15.png"><img src="Images/banner16.png"></div>
+    <div class="banner-column"><img src="Images/banner17.png"><img src="Images/banner18.png"></div>
+    <div class="banner-column"><img src="Images/banner19.png"><img src="Images/banner20.png"></div>
+    <div class="banner-column"><img src="Images/banner21.png"><img src="Images/banner22.png"></div>
+    <div class="banner-column"><img src="Images/banner23.png"><img src="Images/banner24.png"></div>
+    <div class="banner-column"><img src="Images/banner25.png"><img src="Images/banner26.png"></div>
+    <div class="banner-column"><img src="Images/banner27.png"><img src="Images/banner28.png"></div>
+    <div class="banner-column"><img src="Images/banner29.png"><img src="Images/banner1.png"></div>
+    <!-- Duplicate for seamless loop -->
+    <div class="banner-column"><img src="Images/banner1.png"><img src="Images/banner2.png"></div>
+    <div class="banner-column"><img src="Images/banner3.png"><img src="Images/banner4.png"></div>
+    <div class="banner-column"><img src="Images/banner5.png"><img src="Images/banner6.png"></div>
+  </div>
+</section>
+
+<!-- Change 21: Updated CTA heading -->
+<section class="final-cta-section">
+  <div class="container">
+    <h2>Are You ready to Upgrade How the Industry sees You?</h2>
+    <a class="hero-btn" href="https://zcal.co/i/w9sHRUVw" target="_blank">Schedule a Call</a>
+  </div>
+</section>
+
+<footer class="footer">© 2026 AEENAK Designs</footer>
+
+</body>
+</html>

@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Case Studies | AEENAK</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- PDF.js for fast rendering -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
+
+    body {
+      background: #0a0e27;
+      color: #f5f5f5;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* AURORA */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0;
+      width: 300%; height: 300%;
+      background: linear-gradient(-45deg, #0a1628, #060c18, #000000, #0d1f3c, #030508, #0a1628);
+      background-size: 300% 300%;
+      animation: aurora 18s ease-in-out infinite;
+      z-index: -2;
+      pointer-events: none;
+    }
+
+    @keyframes aurora {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .container { width: 90%; max-width: 1200px; margin: 0 auto; }
+    section { padding: 110px 20px; position: relative; z-index: 1; }
+
+    /* NAV */
+    .nav {
+      background: rgba(10, 14, 39, 0.8);
+      backdrop-filter: blur(10px);
+      padding: 20px 0;
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(79, 172, 254, 0.1);
+    }
+
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Change 22 */
+    .logo {
+      font-weight: 800;
+      font-size: 24px;
+      color: #f5f5f5;
+      text-decoration: none;
+      letter-spacing: -0.5px;
+    }
+
+    .nav-btn {
+      background: #0a66c2;
+      padding: 12px 28px;
+      border-radius: 6px;
+      text-decoration: none;
+      color: white;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      font-size: 14px;
+    }
+
+    .nav-btn:hover {
+      background: #0852a3;
+      transform: translateY(-2px);
+    }
+
+    /* HERO */
+    .hero {
+      text-align: center;
+      padding-top: 160px;
+      min-height: 50vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero h1 { font-size: 64px; font-weight: 800; color: #f5f5f5; letter-spacing: -1px; }
+
+    /* CASE STUDIES — Change 25: 16:9 aspect ratio */
+    .case-studies { text-align: center; }
+
+    .case-studies h2 {
+      font-size: 40px;
+      font-weight: 800;
+      margin-bottom: 10px;
+      color: #f5f5f5;
+      letter-spacing: -0.5px;
+    }
+
+    .case-studies-sub {
+      font-size: 18px;
+      color: rgba(245,245,245,0.65);
+      margin-bottom: 60px;
+      font-weight: 500;
+    }
+
+    .case-grid {
+      display: grid;
+      /* Change 25: 16:9 horizontal layout */
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+      margin-bottom: 60px;
+    }
+
+    .case-card {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(79, 172, 254, 0.15);
+      background: rgba(79, 172, 254, 0.05);
+      /* Change 25: 16:9 ratio */
+      aspect-ratio: 16/9;
+    }
+
+    .case-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(10, 102, 194, 0.4);
+      box-shadow: 0 20px 50px rgba(10, 102, 194, 0.2);
+    }
+
+    .case-thumbnail {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Canvas thumbnails — 16:9 container */
+    .case-card canvas {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .case-label {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(10, 14, 39, 0.95), transparent);
+      padding: 20px 15px 15px;
+      color: #f5f5f5;
+      font-size: 14px;
+      font-weight: 600;
+      text-align: left;
+    }
+
+    .loading-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(79, 172, 254, 0.05);
+      color: rgba(245,245,245,0.3);
+      font-size: 13px;
+    }
+
+    /* VIDEO CONTENT SECTION — Change 25 */
+    .video-content { text-align: center; }
+
+    .video-content h2 {
+      font-size: 40px;
+      font-weight: 800;
+      margin-bottom: 50px;
+      color: #f5f5f5;
+      letter-spacing: -0.5px;
+    }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+    }
+
+    .video-embed-wrap {
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(79, 172, 254, 0.15);
+      aspect-ratio: 16/9;
+      background: #000;
+    }
+
+    .video-embed-wrap iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* MODAL */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.95);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .modal.active { display: flex; }
+
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+    .modal-content {
+      position: relative;
+      width: 100%;
+      max-width: 70%;
+      height: 90vh;
+      background: #0a0e27;
+      border: 1px solid rgba(79, 172, 254, 0.15);
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 25px;
+      border-bottom: 1px solid rgba(79, 172, 254, 0.1);
+    }
+
+    .modal-title { font-size: 18px; font-weight: 700; color: #f5f5f5; }
+    .modal-page-info { font-size: 14px; color: rgba(245, 245, 245, 0.6); }
+
+    .modal-close {
+      background: none;
+      border: none;
+      color: #f5f5f5;
+      font-size: 28px;
+      cursor: pointer;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-close:hover { color: #4faafe; }
+
+    .pdf-viewer {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: auto;
+      background: #000;
+    }
+
+    #pdf-canvas { max-width: 100%; max-height: 100%; object-fit: contain; }
+
+    .modal-footer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      padding: 20px 25px;
+      border-top: 1px solid rgba(79, 172, 254, 0.1);
+    }
+
+    .modal-btn {
+      background: rgba(10, 102, 194, 0.2);
+      border: 1px solid rgba(10, 102, 194, 0.3);
+      color: #4faafe;
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 13px;
+      transition: all 0.3s ease;
+    }
+
+    .modal-btn:hover { background: #0a66c2; color: white; }
+    .modal-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+    .page-counter { color: rgba(245, 245, 245, 0.7); font-size: 14px; min-width: 80px; text-align: center; }
+
+    /* FOOTER — Change 25 */
+    .page-footer {
+      text-align: center;
+      padding: 30px 20px;
+      color: rgba(245,245,245,0.4);
+      font-size: 14px;
+      position: relative;
+      z-index: 1;
+      border-top: 1px solid rgba(79, 172, 254, 0.08);
+    }
+
+    @media (max-width: 900px) {
+      .modal-content { max-width: 85%; height: 85vh; }
+      .case-grid { grid-template-columns: repeat(2, 1fr); }
+      .hero h1 { font-size: 44px; }
+    }
+
+    @media (max-width: 600px) {
+      .modal-content { max-width: 95%; height: 90vh; }
+      .case-grid { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 32px; }
+      .case-studies h2 { font-size: 28px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="logo">AEENAK</a>
+    <a href="https://zcal.co/i/w9sHRUVw" class="nav-btn">Book an Appointment</a>
+  </div>
+</nav>
+
+<section class="hero container">
+  <h1>Case Studies</h1>
+</section>
+
+<!-- CASE STUDIES — Change 25 -->
+<section class="case-studies container">
+  <!-- Change 25: Updated heading + subheading -->
+  <h2>How Leaders used Socials (Including YouTube, Twitter (X) and Instagram to Generate Higher Inbound Leads</h2>
+  <p class="case-studies-sub">Portfolio from my Social Agency</p>
+
+  <div class="case-grid" id="case-grid">
+    <!-- Case cards generated by JS -->
+  </div>
+</section>
+
+<!-- VIDEO CONTENT SECTION — Change 25 -->
+<section class="video-content container">
+  <h2>Video Content Created by my Social Agency</h2>
+
+  <div class="video-grid" id="video-grid">
+    <!-- Video embed placeholders — replace VIDEO_ID_X with actual YouTube/Vimeo IDs -->
+    <div class="video-embed-wrap">
+      <iframe src="https://www.youtube.com/embed/placeholder1" allowfullscreen loading="lazy" title="Agency Video 1"></iframe>
+    </div>
+    <div class="video-embed-wrap">
+      <iframe src="https://www.youtube.com/embed/placeholder2" allowfullscreen loading="lazy" title="Agency Video 2"></iframe>
+    </div>
+    <div class="video-embed-wrap">
+      <iframe src="https://www.youtube.com/embed/placeholder3" allowfullscreen loading="lazy" title="Agency Video 3"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- PDF VIEWER MODAL -->
+<div class="modal" id="pdf-modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <div>
+        <div class="modal-title" id="modal-title">Case Study</div>
+        <div class="modal-page-info" id="modal-file-info"></div>
+      </div>
+      <button class="modal-close" onclick="closePDFModal()">×</button>
+    </div>
+    <div class="pdf-viewer">
+      <canvas id="pdf-canvas"></canvas>
+    </div>
+    <div class="modal-footer">
+      <button class="modal-btn" id="prev-btn" onclick="prevPage()">← Previous</button>
+      <div class="page-counter"><span id="current-page">1</span> / <span id="total-pages">1</span></div>
+      <button class="modal-btn" id="next-btn" onclick="nextPage()">Next →</button>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER — Change 25 -->
+<footer class="page-footer">
+  © 2026 AEENAK. All rights reserved.
+</footer>
+
+<script>
+  pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+  const S3_BUCKET = 'https://aeenak.s3.amazonaws.com/';
+  const CASE_STUDIES = [
+    { id: 1, name: 'Case Study 1', file: 'case-study-1.pdf' },
+    { id: 2, name: 'Case Study 2', file: 'case-study-2.pdf' },
+    { id: 3, name: 'Case Study 3', file: 'case-study-3.pdf' },
+    { id: 4, name: 'Case Study 4', file: 'case-study-4.pdf' },
+    { id: 5, name: 'Case Study 5', file: 'case-study-5.pdf' },
+    { id: 6, name: 'Case Study 6', file: 'case-study-6.pdf' },
+    { id: 7, name: 'Case Study 7', file: 'case-study-7.pdf' },
+    { id: 8, name: 'Case Study 8', file: 'case-study-8.pdf' }
+  ];
+
+  let currentPDF = null, currentPage = 1, totalPages = 1;
+
+  // Change 25: Faster loading — lazy thumbnail generation with IntersectionObserver
+  async function initializeCaseStudies() {
+    const grid = document.getElementById('case-grid');
+
+    for (const study of CASE_STUDIES) {
+      const card = document.createElement('div');
+      card.className = 'case-card';
+      card.onclick = () => openPDFModal(study.file, study.name);
+
+      const placeholder = document.createElement('div');
+      placeholder.className = 'loading-placeholder';
+      placeholder.textContent = 'Loading…';
+
+      const label = document.createElement('div');
+      label.className = 'case-label';
+      label.textContent = study.name;
+
+      card.appendChild(placeholder);
+      card.appendChild(label);
+      grid.appendChild(card);
+
+      // Use intersection observer for lazy load
+      const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            obs.unobserve(entry.target);
+            loadPDFThumbnail(study.file, card, placeholder);
+          }
+        });
+      }, { rootMargin: '200px' });
+
+      observer.observe(card);
+    }
+  }
+
+  async function loadPDFThumbnail(file, card, placeholder) {
+    try {
+      const url = S3_BUCKET + file;
+      const pdf = await pdfjsLib.getDocument({ url, disableFontFace: true }).promise;
+      const page = await pdf.getPage(1);
+
+      // 16:9 scale fit
+      const vp = page.getViewport({ scale: 1 });
+      const targetW = card.offsetWidth || 400;
+      const scale = (targetW / vp.width) * 1.2;
+      const viewport = page.getViewport({ scale });
+
+      const canvas = document.createElement('canvas');
+      canvas.width = viewport.width;
+      canvas.height = viewport.height;
+      canvas.className = 'case-thumbnail';
+
+      await page.render({ canvasContext: canvas.getContext('2d'), viewport }).promise;
+
+      if (placeholder.parentNode === card) card.replaceChild(canvas, placeholder);
+    } catch (err) {
+      placeholder.textContent = 'Preview unavailable';
+    }
+  }
+
+  async function openPDFModal(file, name) {
+    try {
+      const url = S3_BUCKET + file;
+      currentPDF = await pdfjsLib.getDocument(url).promise;
+      totalPages = currentPDF.numPages;
+      currentPage = 1;
+      document.getElementById('modal-title').textContent = name;
+      document.getElementById('modal-file-info').textContent = file;
+      document.getElementById('total-pages').textContent = totalPages;
+      renderPDFPage(1);
+      document.getElementById('pdf-modal').classList.add('active');
+      document.addEventListener('keydown', handleKeyPress);
+    } catch (err) {
+      alert('Unable to load PDF. Please try again.');
+    }
+  }
+
+  async function renderPDFPage(pageNum) {
+    if (!currentPDF || pageNum < 1 || pageNum > totalPages) return;
+    const page = await currentPDF.getPage(pageNum);
+    const canvas = document.getElementById('pdf-canvas');
+    const scale = window.innerWidth > 1200 ? 2 : 1.5;
+    const viewport = page.getViewport({ scale });
+    canvas.width = viewport.width;
+    canvas.height = viewport.height;
+    await page.render({ canvasContext: canvas.getContext('2d'), viewport }).promise;
+    currentPage = pageNum;
+    document.getElementById('current-page').textContent = currentPage;
+    document.getElementById('prev-btn').disabled = currentPage === 1;
+    document.getElementById('next-btn').disabled = currentPage === totalPages;
+  }
+
+  function nextPage() { if (currentPage < totalPages) renderPDFPage(currentPage + 1); }
+  function prevPage() { if (currentPage > 1) renderPDFPage(currentPage - 1); }
+
+  function closePDFModal() {
+    document.getElementById('pdf-modal').classList.remove('active');
+    document.removeEventListener('keydown', handleKeyPress);
+    currentPDF = null;
+  }
+
+  function handleKeyPress(e) {
+    if (e.key === 'ArrowRight' || e.key === ' ') nextPage();
+    if (e.key === 'ArrowLeft') prevPage();
+    if (e.key === 'Escape') closePDFModal();
+  }
+
+  document.getElementById('pdf-modal').addEventListener('click', e => {
+    if (e.target.id === 'pdf-modal') closePDFModal();
+  });
+
+  window.addEventListener('load', initializeCaseStudies);
+</script>
+</body>
+</html>
